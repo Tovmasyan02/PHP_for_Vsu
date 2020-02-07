@@ -7,9 +7,9 @@ $(".btnedit").click( e =>{
     let textvalues = displayData(e);
 
     ;
-    let bookname = $("input[name*='book_name']");
-    let bookpublisher = $("input[name*='book_publisher']");
-    let bookprice = $("input[name*='book_price']");
+    let bookname = $("input[name*='FIO']");
+    let bookpublisher = $("input[name*='fakultet']");
+    let bookprice = $("input[name*='price']");
 
     id.val(textvalues[0]);
     bookname.val(textvalues[1]);

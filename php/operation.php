@@ -24,13 +24,13 @@ if(isset($_POST['deleteall'])){
 }
 
 function createData(){
-    $bookname = textboxValue("book_name");
-    $bookpublisher = textboxValue("book_publisher");
-    $bookprice = textboxValue("book_price");
+    $bookname = textboxValue("FIO");
+    $bookpublisher = textboxValue("fakultet");
+    $bookprice = textboxValue("price");
 
     if($bookname && $bookpublisher && $bookprice){
 
-        $sql = "INSERT INTO books (book_name, book_publisher, book_price) 
+        $sql = "INSERT INTO VSU (FIO, fakultet, price) 
                         VALUES ('$bookname','$bookpublisher','$bookprice')";
 
         if(mysqli_query($GLOBALS['con'], $sql)){
@@ -63,11 +63,12 @@ function TextNode($classname, $msg){
 
 // get data from mysql database
 function getData(){
-    $sql = "SELECT * FROM books";
+    $sql = "SELECT * FROM VSU";
 
     $result = mysqli_query($GLOBALS['con'], $sql);
 
     if(mysqli_num_rows($result) > 0){
+		
         return $result;
     }
 }
@@ -75,13 +76,13 @@ function getData(){
 // update dat
 function UpdateData(){
     $bookid = textboxValue("book_id");
-    $bookname = textboxValue("book_name");
-    $bookpublisher = textboxValue("book_publisher");
-    $bookprice = textboxValue("book_price");
+	   $bookname = textboxValue("FIO");
+    $bookpublisher = textboxValue("fakultet");
+    $bookprice = textboxValue("price");
 
     if($bookname && $bookpublisher && $bookprice){
         $sql = "
-                    UPDATE books SET book_name='$bookname', book_publisher = '$bookpublisher', book_price = '$bookprice' WHERE id='$bookid';                    
+                    UPDATE VSU SET FIO='$bookname', fakultet = '$bookpublisher', price = '$bookprice' WHERE id='$bookid';                    
         ";
 
         if(mysqli_query($GLOBALS['con'], $sql)){
@@ -101,7 +102,7 @@ function UpdateData(){
 function deleteRecord(){
     $bookid = (int)textboxValue("book_id");
 
-    $sql = "DELETE FROM books WHERE id=$bookid";
+    $sql = "DELETE FROM VSU WHERE id=$bookid";
 
     if(mysqli_query($GLOBALS['con'], $sql)){
         TextNode("success","Record Deleted Successfully...!");
@@ -128,7 +129,7 @@ function deleteBtn(){
 
 
 function deleteAll(){
-    $sql = "DROP TABLE books";
+    $sql = "DROP TABLE VSU";
 
     if(mysqli_query($GLOBALS['con'], $sql)){
         TextNode("success","All Record deleted Successfully...!");

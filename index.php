@@ -1,7 +1,7 @@
 <?php
 
-require_once ("../crud/php/component.php");
-require_once ("../crud/php/operation.php");
+require_once ("./php/component.php");
+require_once ("./php/operation.php");
 ?>
 
 <!doctype html>
@@ -24,7 +24,7 @@ require_once ("../crud/php/operation.php");
 
 <main>
     <div class="container text-center">
-        <h1 class="py-4 bg-dark text-light rounded"><i class="fas fa-swatchbook"></i> Book Store</h1>
+        <h1 class="py-4 bg-dark text-light rounded"><i class="fas fa-swatchbook"></i> Преподаватели ВГУ</h1>
 
         <div class="d-flex justify-content-center">
             <form action="" method="post" class="w-50">
@@ -32,14 +32,14 @@ require_once ("../crud/php/operation.php");
                     <?php inputElement("<i class='fas fa-id-badge'></i>","ID", "book_id",setID()); ?>
                 </div>
                 <div class="pt-2">
-                    <?php inputElement("<i class='fas fa-book'></i>","Book Name", "book_name",""); ?>
+                    <?php inputElement("<i class='fas fa-book'></i>","ФИО", "FIO",""); ?>
                 </div>
                 <div class="row pt-2">
                     <div class="col">
-                        <?php inputElement("<i class='fas fa-people-carry'></i>","Publisher", "book_publisher",""); ?>
+                        <?php inputElement("<i class='fas fa-people-carry'></i>","Факультет", "fakultet",""); ?>
                     </div>
                     <div class="col">
-                        <?php inputElement("<i class='fas fa-dollar-sign'></i>","Price", "book_price",""); ?>
+                        <?php inputElement("<i class='fas fa-dollar-sign'></i>","Зарплата", "price",""); ?>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center">
@@ -53,40 +53,42 @@ require_once ("../crud/php/operation.php");
         </div>
 
         <!-- Bootstrap table  -->
-        <div class="d-flex table-data">
+        <div class="d-flex justify-content-center ">
             <table class="table table-striped table-dark">
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Book Name</th>
-                        <th>Publisher</th>
-                        <th>Book Price</th>
+                        <th>ФИО</th>
+                        <th>Факультет</th>
+                        <th>Зарплата</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody id="tbody">
                    <?php
 
-
-                   if(isset($_POST['read'])){
+						
+                  // if(isset($_POST['read'])){
+					   
                        $result = getData();
 
                        if($result){
-
+							
                            while ($row = mysqli_fetch_assoc($result)){ ?>
 
                                <tr>
                                    <td data-id="<?php echo $row['id']; ?>"><?php echo $row['id']; ?></td>
-                                   <td data-id="<?php echo $row['id']; ?>"><?php echo $row['book_name']; ?></td>
-                                   <td data-id="<?php echo $row['id']; ?>"><?php echo $row['book_publisher']; ?></td>
-                                   <td data-id="<?php echo $row['id']; ?>"><?php echo '$' . $row['book_price']; ?></td>
+                                   <td data-id="<?php echo $row['id']; ?>"><?php echo $row['FIO']; ?></td>
+                                   <td data-id="<?php echo $row['id']; ?>"><?php echo $row['fakultet']; ?></td>
+                                   <td data-id="<?php echo $row['id']; ?>"><?php echo '$' . $row['price']; ?></td>
                                    <td ><i class="fas fa-edit btnedit" data-id="<?php echo $row['id']; ?>"></i></td>
                                </tr>
 
                    <?php
                            }
+					   
+              //         }
 
-                       }
                    }
 
 
@@ -104,6 +106,6 @@ require_once ("../crud/php/operation.php");
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<script src="../crud/php/main.js"></script>
+<script src="./php/main.js"></script>
 </body>
 </html>

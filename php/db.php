@@ -4,7 +4,7 @@ function Createdb(){
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "bookstore";
+    $dbname = "VSU";
 
     // create connection
     $con = mysqli_connect($servername, $username, $password);
@@ -21,11 +21,11 @@ function Createdb(){
         $con = mysqli_connect($servername, $username, $password, $dbname);
 
         $sql = "
-                        CREATE TABLE IF NOT EXISTS books(
+                        CREATE TABLE IF NOT EXISTS vsu(
                             id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                            book_name VARCHAR (25) NOT NULL,
-                            book_publisher VARCHAR (20),
-                            book_price FLOAT 
+                            FIO VARCHAR (25) NOT NULL,
+                            fakultet VARCHAR (20),
+                            price FLOAT 
                         );
         ";
 
