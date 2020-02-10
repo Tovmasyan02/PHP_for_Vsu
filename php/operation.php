@@ -24,14 +24,14 @@ if(isset($_POST['deleteall'])){
 }
 
 function createData(){
-    $bookname = textboxValue("FIO");
-    $bookpublisher = textboxValue("fakultet");
-    $bookprice = textboxValue("price");
+    $fio = textboxValue("FIO");
+    $fakultet = textboxValue("fakultet");
+    $price = textboxValue("price");
 
-    if($bookname && $bookpublisher && $bookprice){
+    if($fio && $fakultet && $price){
 
         $sql = "INSERT INTO VSU (FIO, fakultet, price) 
-                        VALUES ('$bookname','$bookpublisher','$bookprice')";
+                        VALUES ('$fio','$fakultet','$price')";
 
         if(mysqli_query($GLOBALS['con'], $sql)){
             TextNode("success", "Record Successfully Inserted...!");
@@ -75,14 +75,14 @@ function getData(){
 
 // update dat
 function UpdateData(){
-    $bookid = textboxValue("book_id");
-	   $bookname = textboxValue("FIO");
-    $bookpublisher = textboxValue("fakultet");
-    $bookprice = textboxValue("price");
+    $id = textboxValue("book_id");
+	$fio = textboxValue("FIO");
+    $fakultet = textboxValue("fakultet");
+    $price = textboxValue("price");
 
-    if($bookname && $bookpublisher && $bookprice){
+    if($fio && $fakultet && $price){
         $sql = "
-                    UPDATE VSU SET FIO='$bookname', fakultet = '$bookpublisher', price = '$bookprice' WHERE id='$bookid';                    
+                    UPDATE VSU SET FIO='$fio', fakultet = '$fakultet', price = '$price' WHERE id='$id';                    
         ";
 
         if(mysqli_query($GLOBALS['con'], $sql)){
@@ -100,9 +100,9 @@ function UpdateData(){
 
 
 function deleteRecord(){
-    $bookid = (int)textboxValue("book_id");
+    $id = (int)textboxValue("book_id");
 
-    $sql = "DELETE FROM VSU WHERE id=$bookid";
+    $sql = "DELETE FROM VSU WHERE id=$id";
 
     if(mysqli_query($GLOBALS['con'], $sql)){
         TextNode("success","Record Deleted Successfully...!");

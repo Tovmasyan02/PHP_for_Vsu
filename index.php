@@ -32,14 +32,15 @@ require_once ("./php/operation.php");
                     <?php inputElement("<i class='fas fa-id-badge'></i>","ID", "book_id",setID()); ?>
                 </div>
                 <div class="pt-2">
-                    <?php inputElement("<i class='fas fa-book'></i>","ФИО", "FIO",""); ?>
+                    <?php inputElement("<i class='fas fa-male'></i>","ФИО", "FIO",""); ?>
+
                 </div>
                 <div class="row pt-2">
                     <div class="col">
-                        <?php inputElement("<i class='fas fa-people-carry'></i>","Факультет", "fakultet",""); ?>
+                        <?php inputElement("<i class='fas fa-university'></i>","Факультет", "fakultet",""); ?>
                     </div>
                     <div class="col">
-                        <?php inputElement("<i class='fas fa-dollar-sign'></i>","Зарплата", "price",""); ?>
+                        <?php inputElement("<i class='fas fa-ruble-sign'></i>","Зарплата", "price",""); ?>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center">
